@@ -11,16 +11,17 @@ import io.vertx.core.json.JsonObject
 @VertxGen
 @ProxyGen
 interface JokeService {
-
-    @GenIgnore
-    companion object {
-        @JvmStatic
-        fun create(vertx: Vertx): JokeService = JokeServiceImpl(vertx)
-
-        @JvmStatic
-        fun createProxy(vertx: Vertx, address: String): JokeService =
-            JokeServiceVertxEBProxy(vertx, address)
-    }
-
     fun fetchJoke(handler: Handler<AsyncResult<JsonObject>>)
 }
+
+@GenIgnore
+object JokeServiceFactory {
+    @JvmStatic
+    fun create(vertx: Vertx): JokeService = JokeServiceImpl(vertx)
+
+    @JvmStatic
+    fun createProxy(vertx: Vertx, address: String): JokeService =
+        JokeServiceVertxEBProxy(vertx, address)
+}
+
+

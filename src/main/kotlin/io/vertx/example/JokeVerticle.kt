@@ -7,7 +7,7 @@ import io.vertx.serviceproxy.ServiceBinder
 class JokeVerticle : AbstractVerticle() {
     override fun start() {
         // Register the service
-        val service = JokeService.create(vertx)
+        val service = JokeServiceFactory.create(vertx)
         ServiceBinder(vertx)
             .setAddress("service.joke")
             .register(JokeService::class.java, service)

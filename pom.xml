@@ -15,10 +15,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <kotlin.version>1.3.0</kotlin.version>
+        <kotlin.version>1.4.32</kotlin.version>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
 
-        <vertx.version>3.5.4</vertx.version>
+        <vertx.version>4.0.3</vertx.version>
         <vertx.verticle>io.vertx.example.JokeVerticle</vertx.verticle>
     </properties>
 
@@ -112,7 +112,6 @@
                                     <groupId>io.vertx</groupId>
                                     <artifactId>vertx-service-proxy</artifactId>
                                     <version>${vertx.version}</version>
-                                    <classifier>processor</classifier>
                                 </annotationProcessorPath>
                             </annotationProcessorPaths>
                         </configuration>
