@@ -7,12 +7,12 @@ import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import io.vertx.ext.web.client.WebClient
 import io.vertx.ext.web.codec.BodyCodec
-import io.vertx.kotlin.ext.web.client.WebClientOptions
+import io.vertx.kotlin.ext.web.client.webClientOptionsOf
 
 class JokeServiceImpl(vertx: Vertx) : JokeService {
 
     private val client by lazy {
-        val options = WebClientOptions(ssl = true)
+        val options = webClientOptionsOf(ssl = true)
         WebClient.create(vertx, options)
     }
 
@@ -28,5 +28,4 @@ class JokeServiceImpl(vertx: Vertx) : JokeService {
                 }
             }
     }
-
 }
