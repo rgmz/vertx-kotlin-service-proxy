@@ -15,10 +15,10 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <kotlin.version>1.4.21</kotlin.version>
+        <kotlin.version>1.4.32</kotlin.version>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
 
-        <vertx.version>4.0.3</vertx.version>
+        <vertx.version>4.1.0.CR2</vertx.version>
         <vertx.verticle>io.vertx.example.JokeVerticle</vertx.verticle>
     </properties>
 
@@ -104,7 +104,7 @@
                   </annotationProcessors>
                   <sourceDirs>
                     <sourceDir>src/main/kotlin</sourceDir>
-                    <sourceDir>${project.build.directory}/sources/vertx-codegen</sourceDir>
+                    <sourceDir>${project.build.directory}/target/generated-sources/kotlin</sourceDir>
                   </sourceDirs>
                 </configuration>
               </execution>
@@ -152,7 +152,6 @@
               </execution>
             </executions>
           </plugin>
-
 
             <!--Remove default compile and testCompile phases for Kotlin compilation-->
             <plugin>

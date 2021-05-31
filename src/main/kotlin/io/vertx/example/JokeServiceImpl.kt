@@ -11,21 +11,21 @@ import io.vertx.kotlin.ext.web.client.webClientOptionsOf
 
 class JokeServiceImpl(vertx: Vertx) : JokeService {
 
-    private val client by lazy {
-        val options = webClientOptionsOf(ssl = true)
-        WebClient.create(vertx, options)
-    }
+  private val client by lazy {
+    WebClient.create(vertx, webClientOptionsOf(ssl = true))
+  }
 
-    override fun fetchJoke(handler: Handler<AsyncResult<JsonObject>>) {
-        client.get(443, "icanhazdadjoke.com", "/")
-            .putHeader("Accept", "application/json")
-            .`as`(BodyCodec.jsonObject())
-            .send {
-                if (it.failed()) {
-                    handler.handle(Future.failedFuture(it.cause()))
-                } else {
-                    handler.handle(Future.succeededFuture(it.result().body()))
-                }
-            }
-    }
+  override fun fetchJoke(handler: Handler<AsyncResult<JsonObject>>) {
+    client.get(443, "icanhazdadjoke.com", "/")
+      .putHeader("Accept", "application/json")
+      .`as`(BodyCodec.jsonObject())
+      .send {
+        if (it.failed()) {
+          handler.handle(Future.failedFuture(it.cause()))
+        } else {
+          handler.handle(Future.succeededFuture(it.result().body()))
+        }
+      }
+  }
+
 }
