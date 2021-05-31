@@ -11,7 +11,7 @@ class JokeVerticle : AbstractVerticle() {
 
     vertx.setPeriodic(5000) {
       // Get a reference to JokeService proxy
-      JokeServiceFactory.createProxy(vertx, "service.joke")
+      JokeService.createProxy(vertx, "service.joke")
         .fetchJoke(Handler {
           if (it.succeeded()) {
             println(it.result().getString("joke"))
@@ -24,7 +24,7 @@ class JokeVerticle : AbstractVerticle() {
 
   private fun registerService() {
     // Get a reference to JokeService instance
-    val service = JokeServiceFactory.create(vertx)
+    val service = JokeService.create(vertx)
     ServiceBinder(vertx)
       .setAddress("service.joke")
       .register(JokeService::class.java, service)
